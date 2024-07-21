@@ -22,6 +22,7 @@ const {
   getAllbooks,
   getFindOnebooks,
   postBook,
+  updateBook,
 } = require("../controllers/booksController");
 
 //Endpoints Login and Register
@@ -39,6 +40,7 @@ router.delete("/user/:id", deleteUser);
 router.get("/books", getAllbooks);
 router.get("/books/:id", getFindOnebooks);
 router.post("/book", postBook);
+router.put("/book/:id", updateBook)
 
 module.exports = router;
 

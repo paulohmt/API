@@ -5,7 +5,7 @@ const querys = [
   "SELECT * FROM books",
   "SELECT * FROM books WHERE id = $1",
   "INSERT INTO books (nome, descricao, autor) VALUES ($1, $2, $3) RETURNING *",
-  "UPDATE books SET nome = $1, descricao = $2, autor= $3 WHERE id = $4",
+  "UPDATE books SET nome = $1, descricao = $2, autor = $3 WHERE id = $4 RETURNING*",
   "DELETE FROM books WHERE id = $1",
 ];
 
@@ -40,6 +40,20 @@ module.exports = {
       return { success: true, books: result.rows[0] };
     } catch (error) {
       return { success: false, message: "Erro de registro" };
+    }
+  },
+
+  //Atualizar user do banco de dados!
+  async update(id, books) {
+    const { nome, descricao, autor } = books;
+    const client = await pool.connect();
+    try {
+      const res = await client.query(querys[3], [nome, descricao, autor, id]);
+      return res.rows[0];
+    } catch (error) {
+      throw error;
+    } finally {
+      client.release();
     }
   },
 };
