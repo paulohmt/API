@@ -23,6 +23,7 @@ const {
   getFindOnebooks,
   postBook,
   updateBook,
+  deleteBook
 } = require("../controllers/booksController");
 
 //Endpoints Login and Register
@@ -37,10 +38,11 @@ router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
 // Endpoint Books
-router.get("/books", getAllbooks);
-router.get("/books/:id", getFindOnebooks);
-router.post("/book", postBook);
-router.put("/book/:id", updateBook)
+router.get("/books", getAllbooks); // puxa tudo 
+router.get("/books/:id", getFindOnebooks); // puxa apenas um id
+router.post("/book", postBook); // incrementa informacoes nas tabelas
+router.put("/book/:id", updateBook); // atualiza o id selecionado
+router.delete("/book/:id", deleteBook); // deleta o id selecionado
 
 module.exports = router;
 

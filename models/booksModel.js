@@ -6,7 +6,7 @@ const querys = [
   "SELECT * FROM books WHERE id = $1",
   "INSERT INTO books (nome, descricao, autor) VALUES ($1, $2, $3) RETURNING *",
   "UPDATE books SET nome = $1, descricao = $2, autor = $3 WHERE id = $4 RETURNING*",
-  "DELETE FROM books WHERE id = $1",
+  "DELETE FROM books WHERE id = $1 RETURNING *",
 ];
 
 module.exports = {
@@ -49,6 +49,19 @@ module.exports = {
     const client = await pool.connect();
     try {
       const res = await client.query(querys[3], [nome, descricao, autor, id]);
+      return res.rows[0];
+    } catch (error) {
+      throw error;
+    } finally {
+      client.release();
+    }
+  },
+
+  //Apagar user do banco de dados!
+  async delete(id) {
+    const client = await pool.connect();
+    try {
+      const res = await client.query(querys[4], [id]);
       return res.rows[0];
     } catch (error) {
       throw error;

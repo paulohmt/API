@@ -38,9 +38,20 @@ const updateBook = async (req, res) => {
   }
 };
 
+const deleteBook = async (req, res) => {
+    const { id } = req.params;
+    try {
+      await booksModel.delete(id);
+      return res.status(204).json();
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  };
+
 module.exports = {
   getAllbooks,
   getFindOnebooks,
   postBook,
   updateBook,
+  deleteBook
 };
