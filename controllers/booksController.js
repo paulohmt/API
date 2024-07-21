@@ -18,7 +18,19 @@ const getFindOnebooks = async (req, res) => {
       return res.status(500).json(error.message);
     }
 };
+
+const postBook = async (req, res) => {
+    try {
+      const books = await booksModel.post(req.body);
+      return res.status(201).json(books);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  };
+
+
 module.exports = {
   getAllbooks,
-  getFindOnebooks
+  getFindOnebooks,
+  postBook,
 };

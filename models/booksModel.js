@@ -29,4 +29,17 @@ module.exports = {
       client.release();
     }
   },
+
+  //Cadastrar user no banco de dados!
+  async post(books) {
+    const { nome, descricao, autor } = books;
+    try {
+      const client = await pool.connect();
+      const result = await client.query(querys[2], [nome, descricao, autor]);
+      client.release();
+      return { success: true, books: result.rows[0] };
+    } catch (error) {
+      return { success: false, message: "Erro de registro" };
+    }
+  },
 };

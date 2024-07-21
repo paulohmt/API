@@ -1,0 +1,32 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.login-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.login-form-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group.text-center button {
+    width: 100%;
+}
