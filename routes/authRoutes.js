@@ -18,11 +18,13 @@ const {
 } = require("../controllers/userController");
 
 // Import Books
-//*******
+const {
+  getAllbooks
+} = require("../controllers/booksController");
 
 //Endpoints Login and Register
 router.post("/register", register); 
-router.post("/login", login); 
+router.post("/login", login);
 
 //Endpoint Users
 router.get("/users", getAllusers); 
@@ -32,6 +34,6 @@ router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
 // Endpoint Books
-//*******
+router.get("/books", getAllbooks);
 
 module.exports = router;
