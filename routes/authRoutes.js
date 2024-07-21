@@ -19,7 +19,8 @@ const {
 
 // Import Books
 const {
-  getAllbooks
+  getAllbooks,
+  getFindOnebooks,
 } = require("../controllers/booksController");
 
 //Endpoints Login and Register
@@ -35,6 +36,7 @@ router.delete("/user/:id", deleteUser);
 
 // Endpoint Books
 router.get("/books", getAllbooks);
+router.get("/books/:id", getFindOnebooks);
 
 module.exports = router;
 
